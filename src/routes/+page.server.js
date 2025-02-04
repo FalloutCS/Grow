@@ -13,13 +13,21 @@ export const actions = {
       const data = await request.formData();
       const email = data.get('email');
       
-      await addEmail(email);
+      const result = await addEmail(email);
       
+      if (!result.success) {
+        return {
+          success: false,
+          error: 'Failed to add email to waitlist'
+        };
+      }
+
       return {
         success: true,
-        message: 'Thank you for joining the waitlist!'
+        id: result.id
       };
     } catch (error) {
+      console.error("Server error:", error);
       return {
         success: false,
         error: 'Something went wrong. Please try again.'

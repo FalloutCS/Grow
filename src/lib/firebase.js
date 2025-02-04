@@ -1,19 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import {
-	collection,
-	getDoc,
-	addDoc,
-	setDoc,
-	updateDoc,
-	deleteDoc,
-	doc,
-	arrayUnion,
-	arrayRemove,
-	onSnapshot,
-	FieldPath
-} from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -33,12 +21,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export async function addEmail(email) {
+export const addEmail = async (email) => {
 	try {
-		return await setDoc(doc(db, 'users', email), {
-			email: email,
-		});
-	} catch (err) {
-		console.log(err);
+	  // Create a document ID from the email (you might want to hash it or sanitize it)
+	  const docId = email.toLowerCase().replace(/[^a-z0-9]/g, '_');
+	  
+	  // Use setDoc with merge:true to avoid overwriting if document exists
+	  await setDoc(doc(db, "waitlist", docId), {
+		email: email.toLowerCase(), // Store email in lowercase for consistency
+		timestamp: new Date(),
+		updatedAt: new Date()
+	  }, { merge: true });
+	  
+	  return {
+		success: true,
+		id: docId
+	  };
+	} catch (error) {
+	  console.error("Error adding email:", error);
+	  return {
+		success: false,
+		error: error.message
+	  };
 	}
-}
+  };

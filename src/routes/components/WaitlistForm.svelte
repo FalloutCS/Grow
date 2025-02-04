@@ -1,52 +1,69 @@
 <!-- WaitlistForm.svelte -->
 <script>
+	import { enhance } from '$app/forms';
+	
+	let submitted = $state(false);
+	let error = $state('');
+  
+	/** @type {import('./$types').PageProps} */
 	let { form } = $props();
+  
+	function handleSubmit(event) {
+	  submitted = false;
+	  error = '';
+	}
   </script>
   
   <section class="bg-primary-400 py-2xl">
 	<div class="container mx-auto px-md">
-	  <h2 class="text-center font-header text-header text-secondary mb-xl">Join the Waitlist</h2>
-	  
-	  <form 
-	  	id="waitlist-form"
+	  <h2 class="mb-xl text-center font-header text-header text-secondary">Join the Waitlist</h2>
+  
+	  <form
+		id="waitlist-form"
 		method="POST"
-		class="mx-auto max-w-md bg-primary-300 p-8 rounded-lg shadow-lg border border-accent-cyan/20"
+		use:enhance={() => {
+		  return async ({ result }) => {
+			if (result.type === 'success') {
+			  submitted = true;
+			} else {
+			  error = 'Something went wrong. Please try again.';
+			}
+		  };
+		}}
+		on:submit={handleSubmit}
+		class="mx-auto max-w-md rounded-lg border border-accent-cyan/20 bg-primary-300 p-8 shadow-lg"
 	  >
 		<div class="mb-6">
-		  <label class="block font-header text-secondary mb-2" for="email">
+		  <label class="mb-2 block font-header text-secondary" for="email">
 			Email Address
 		  </label>
-		  <input 
+		  <input
 			id="email"
-			name="email" 
+			name="email"
 			type="email"
 			required
 			placeholder="your@email.com"
-			class="w-full px-4 py-3 rounded-md bg-primary border border-secondary-500 text-secondary
-				   placeholder:text-secondary-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan
-				   transition duration-200"
-		  >
+			class="w-full rounded-md border border-secondary-500 bg-primary px-4 py-3 text-secondary
+			   transition duration-200 placeholder:text-secondary-500 focus:outline-none
+			   focus:ring-2 focus:ring-accent-cyan"
+		  />
 		</div>
   
 		<button
 		  type="submit"
-		  class="w-full bg-accent-cyan text-primary font-header py-3 px-6 rounded-md
-				 hover:bg-accent-cyan-dark transition duration-200 
-				 disabled:opacity-50 disabled:cursor-not-allowed"
+		  class="w-full rounded-md bg-accent-cyan px-6 py-3 font-header text-primary
+			 transition duration-200 hover:bg-accent-cyan-dark
+			 disabled:cursor-not-allowed disabled:opacity-50"
 		>
-		  Join Waitlist
+		  {#if submitted}
+			Thanks for joining! ✨
+		  {:else}
+			Join Waitlist
+		  {/if}
 		</button>
   
-		{#if form?.success}
-		  <div class="mt-4 p-4 bg-accent-green/20 border border-accent-green text-accent-green rounded-md">
-			Thank you for joining the waitlist!
-		  </div>
-		{/if}
-  
-		{#if form?.error}
-		  <div class="mt-4 p-4 bg-red-500/20 border border-red-500 text-red-500 rounded-md">
-			{form.error}
-		  </div>
+		{#if error}
+		  <p class="mt-4 text-center text-red-500">{error}</p>
 		{/if}
 	  </form>
 	</div>
