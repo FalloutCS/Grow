@@ -30,7 +30,7 @@
 			}
 		  };
 		}}
-		on:submit={handleSubmit}
+		onsubmit={handleSubmit}
 		class="mx-auto max-w-md rounded-lg border border-accent-cyan/20 bg-primary-300 p-8 shadow-lg"
 	  >
 		<div class="mb-6">
