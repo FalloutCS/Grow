@@ -1,0 +1,29 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* app.css */
+html {
+    scroll-behavior: smooth;
+    background-color: theme('colors.primary.DEFAULT');
+}
+
+/* Optional: Hide scrollbar but keep functionality */
+body {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.primary.400') theme('colors.primary.100');
+}
+
+/* For Webkit browsers */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: theme('colors.primary.400');
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: theme('colors.accent.cyan.DEFAULT');
+    border-radius: 4px;
+}
