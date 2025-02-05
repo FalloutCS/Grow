@@ -8,15 +8,15 @@
 </script>
 
 <svelte:head>
-	<title>Demo Master - Level Up Your CS Strategy</title>
+	<title>GrowGG - Level Up Your CS Strategy</title>
 	<meta
 		name="description"
-		content="Analyze your CS gameplay like the pros with Demo Master. Get instant insights, compare with professional matches, and improve your strategic understanding."
+		content="Analyze your CS gameplay like the pros with GrowGG. Get instant insights, compare with professional matches, and improve your strategic understanding."
 	/>
-	<meta property="og:title" content="Demo Master - Level Up Your CS Strategy" />
+	<meta property="og:title" content="GrowGG - Level Up Your CS Strategy" />
 	<meta
 		property="og:description"
-		content="Analyze your CS gameplay like the pros with Demo Master."
+		content="Analyze your CS gameplay like the pros with GrowGG's Demo Master."
 	/>
 </svelte:head>
 

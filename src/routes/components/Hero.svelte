@@ -11,7 +11,7 @@
       <div class="mb-xl animate-float">
         <img 
           src="/Logo.svg" 
-          alt="Demo Master Logo" 
+          alt="GrowGG Logo" 
           class="h-24 md:h-32 mx-auto"
         />
       </div>
