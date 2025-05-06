@@ -5,6 +5,7 @@
 	import HowItWorks from './components/HowItWorks.svelte';
 	import WaitlistForm from './components/WaitlistForm.svelte';
 	import Footer from './components/Footer.svelte';
+	import SupportUs from './components/SupportUs.svelte';
 </script>
 
 <svelte:head>
@@ -25,6 +26,7 @@
 	<Features />
 	<HowItWorks />
 	<WaitlistForm />
+	<SupportUs />
 
 	<Footer />
 </main>
