@@ -10,7 +10,7 @@
       IMG: './Demo dashboard.png',
       title: 'Automatic Uploads',
       sub_title: 'Never forget important lessons again',
-      description: 'Your demos are automatically uploaded and formatted based on your snapshots'
+      description: 'Your demos are automatically uploaded and formatted based on your snapshots. We\'ll also remind you!'
     },
     {
       IMG: './SnapShots overview.png',
@@ -21,7 +21,7 @@
   ]);
 </script>
 
-<section class="relative py-2xl overflow-hidden">
+<section class="relative py-2xl overflow-hidden" id="features">
   <!-- Gradient background -->
   <div class="absolute inset-0 bg-primary-400">
     <div class="absolute inset-0 bg-gradient-to-b from-primary/0 to-primary"></div>

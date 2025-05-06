@@ -17,12 +17,12 @@
       </div>
 
 			<h1 class="mb-lg font-display text-display text-white">
-				Master Your CS Game with Pro-Level Demo Analysis
+				Master Your CS2 Tactics Lightning Fast 	While Playing
 			</h1>
 
 			<p class="mb-xl font-body text-body text-secondary-200">
-				Analyze your own gameplay like the pros. Get instant insights, compare with professional
-				matches, and level up your strategic understanding.
+				Save your key moments while playing. Get instant insights, compare with professional
+				matches, and become a pro in strategic understanding.
 			</p>
 
 			<button
@@ -36,6 +36,17 @@
 			>
 				Join the waitlist
 			</button>
+			<button
+			type="button"
+			onclick={() => {
+				document.getElementById('features').scrollIntoView({ 
+					behavior: 'smooth'
+				});
+			}}
+			class={'border border-primary-100 rounded-md px-6 py-3 font-header text-secondary-100 transition-colors duration-200'}
+		>
+			or learn more
+		</button>
 		</div>
 	</div>
 </section>
