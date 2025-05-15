@@ -11,9 +11,10 @@ export const actions = {
   default: async ({ request }) => {
     try {
       const data = await request.formData();
+      console.log(data);
       const email = data.get('email');
-      
-      const result = await addEmail(email);
+      const playing_for_6_months = data.get('team');
+      const result = await addEmail(email, playing_for_6_months);
       
       if (!result.success) {
         return {

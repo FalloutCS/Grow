@@ -21,7 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export const addEmail = async (email) => {
+export const addEmail = async (email, playing_for_6_months) => {
 	try {
 	  // Create a document ID from the email (you might want to hash it or sanitize it)
 	  const docId = email.toLowerCase().replace(/[^a-z0-9]/g, '_');
@@ -30,7 +30,8 @@ export const addEmail = async (email) => {
 	  await setDoc(doc(db, "waitlist", docId), {
 		email: email.toLowerCase(), // Store email in lowercase for consistency
 		timestamp: new Date(),
-		updatedAt: new Date()
+		updatedAt: new Date(),
+		teamTime: playing_for_6_months
 	  }, { merge: true });
 	  
 	  return {
