@@ -26,7 +26,7 @@
 	<Features />
 	<HowItWorks />
 	<WaitlistForm />
-	<SupportUs />
+	<!-- <SupportUs /> -->
 
 	<Footer />
 </main>
